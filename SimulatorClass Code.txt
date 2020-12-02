@@ -1,0 +1,37 @@
+package frc.robot.util;
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+import edu.wpi.first.wpilibj.VictorSP;
+
+/**
+    This class handles the data that is sent to Unity which visualizes the robot and creates a simulation
+
+    *------------------------------*
+    |    DO NOT TOUCH THIS CODE    |
+    *------------------------------*
+*/
+public class SimulationEngine {
+    /**
+        Put the motors in the same order you put them in the tank drive class
+        So if you created DifferentialDrive(motorA, motorB); then do simulateTankDrive(motorA, motorB) and vice-versa
+    */
+    public static void simulateTankDrive(VictorSP motorOne, VictorSP motorTwo){
+        try {
+            FileWriter myWriter = new FileWriter("data.txt");
+            myWriter.write(String.valueOf(motorOne.get()) + " " + String.valueOf(motorTwo.get()) + " D");
+            myWriter.close();
+          } catch (IOException e) {
+          }
+    }
+
+    public static void simulateSwerveDrive(double forward, double strafe, double rotation){
+        try {
+            FileWriter myWriter = new FileWriter("data.txt");
+            myWriter.write(forward + " " + strafe + " " + rotation + " S");
+            myWriter.close();
+          } catch (IOException e) {
+          }
+    }
+}
