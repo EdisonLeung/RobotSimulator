@@ -35,15 +35,15 @@ public class tank_drive_controller : MonoBehaviour
 
             float currentAngle = (float)Math.PI * transform.rotation.eulerAngles.y/180;  
 
-            transform.position += new Vector3((float)Math.Sin((double)currentAngle) * forward * 0.3f, 0, 
-                                            (float)Math.Cos((double)currentAngle) * forward * 0.3f);
+            transform.position += new Vector3((float)Math.Sin((double)currentAngle) * forward * 0.125f, 0, 
+                                            (float)Math.Cos((double)currentAngle) * forward * 0.125f);
             transform.Rotate(0, rotation * 3, 0, Space.Self);
         }else if(swerve_mode){
             float forward = motorValues[0];
             float strafe = motorValues[1];
             float rotation = motorValues[2];
 
-            transform.position += new Vector3(strafe * 0.3f, 0, forward * 0.3f);
+            transform.position += new Vector3(strafe * 0.125f, 0, forward * 0.125f);
             transform.Rotate(0, rotation * 5, 0, Space.Self);
         }
 
